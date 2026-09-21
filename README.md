@@ -10,7 +10,7 @@
 
 `Python` · `Django` · `PostgreSQL / PostGIS` · `HTML · CSS · JavaScript`
 
-[프로젝트 소개](#프로젝트-소개) · [화면 둘러보기](#화면-둘러보기) · [시스템 구조](#시스템-구조) · [실행 방법](#실행-방법) · [팀 소개](#팀-소개)
+[프로젝트 소개](#프로젝트-소개) · [기술 스택](#기술-스택) · [화면 둘러보기](#화면-둘러보기) · [시스템 구조](#시스템-구조) · [실행 방법](#실행-방법) · [팀 소개](#팀-소개)
 
 </div>
 
@@ -32,6 +32,73 @@
 | 운동을 꾸준히 이어가기 어려워요. | 간단한 운동량 기록과 소품 보상, 친구 한마디로 다시 방문할 이유를 만듭니다. |
 
 > 현재 저장소는 실제 DB·외부 API를 이용하는 추천 기능과 브라우저 저장소 기반의 체험 기능이 함께 있는 팀 프로젝트입니다. 아래 화면은 데모 캡처이며, 표시된 시설·점수·운동 기록·친구 정보는 실행 환경의 실제 결과와 다를 수 있습니다.
+
+## 기술 스택
+
+<table>
+  <tr><th align="center">Frontend</th><th align="center">Backend</th><th align="center">Database</th><th align="center">Collaboration</th></tr>
+  <tr>
+    <td align="center">
+      <img src="docs/images/stack/html5.svg" width="60" height="60" alt="HTML5" /> &nbsp; <img src="docs/images/stack/css3.svg" width="60" height="60" alt="CSS3" /> &nbsp; <img src="docs/images/stack/javascript.svg" width="60" height="60" alt="JavaScript" />
+      <br />HTML5 · CSS3 · JavaScript
+    </td>
+    <td align="center">
+      <img src="docs/images/stack/python.svg" width="60" height="60" alt="Python" /> &nbsp; <img src="docs/images/stack/django.svg" width="60" height="60" alt="Django" />
+      <br />Python · Django
+    </td>
+    <td align="center">
+      <img src="docs/images/stack/postgresql.svg" width="60" height="60" alt="PostgreSQL" />
+      <br />PostgreSQL
+    </td>
+    <td align="center">
+      <img src="docs/images/stack/github.svg" width="60" height="60" alt="GitHub" /> &nbsp; <img src="docs/images/stack/notion.svg" width="60" height="60" alt="Notion" />
+      <br />GitHub · Notion
+    </td>
+  </tr>
+</table>
+
+<sub>로고: <a href="https://github.com/devicons/devicon">Devicon</a> · SVG 원본 포함</sub>
+
+우심운까는 **Python·Django로 화면과 API를 함께 제공하고, PostgreSQL·PostGIS로 시설과 위치 데이터를 처리하는 웹 애플리케이션**입니다. 화면은 HTML·CSS·JavaScript로 구성하고, 데이터 수집과 추천 로직도 Python으로 구현했습니다.
+
+| 구분 | 사용 기술 | 프로젝트에서 맡는 역할 |
+| --- | --- | --- |
+| **프론트엔드** | HTML, CSS, Vanilla JavaScript | 캐릭터 화면, 방 꾸미기, 프로필 입력, 추천 카드와 사용자 상호작용 |
+| **화면 렌더링** | Django Templates | 서버 데이터를 HTML에 연결하고 공통 레이아웃과 페이지 구성 |
+| **백엔드** | Python, Django | 회원가입·로그인, 세션 관리, 추천 API, 회원 운동량 저장 |
+| **데이터베이스** | PostgreSQL | 회원·운동량과 추천용 시설·기상·대기질 데이터 관리 |
+| **공간 데이터 처리** | PostGIS | 위도·경도 기준으로 시설까지의 거리 계산 |
+| **DB 연결** | psycopg | Django와 PostgreSQL 연결 |
+| **외부 데이터 수집** | requests | 시설·날씨·대기질 및 장소 검색 API 요청 |
+| **운영정보 확인** | BeautifulSoup4, urllib.robotparser | robots.txt 확인과 공개 HTML의 운영·휴무 관련 문구 추출 |
+| **좌표 변환** | pyproj | 수집 코드에서 대기질 측정소 조회에 사용하는 좌표 변환 |
+| **환경 설정** | python-dotenv, 환경변수 | 수집 스크립트의 API 키·조회 설정 로드 |
+| **브라우저 상태 저장** | localStorage | 방 배치, 프로필 취향, 친구·한마디·일기 데모 상태 저장 |
+| **위치·지도 연동** | Browser Geolocation API, Kakao Local API, 카카오맵 링크 | 현재 위치 조회, 지역 좌표·시설 검색, 지도와 길찾기 연결 |
+| **외부 데이터 소스** | 기상청 API, 에어코리아 API, 설정된 시설 API | 추천에 필요한 환경·시설 정보 수집 및 보완 |
+| **협업 도구** | GitHub, Notion | 코드 및 변경 이력 관리, 프로젝트 문서 정리와 팀 정보 공유 |
+
+### 주요 Python 라이브러리
+
+아래는 [requirements.txt](requirements.txt)에 선언된 **설치 허용 버전 범위**입니다. 실제 개발 환경에 설치된 버전을 뜻하지는 않습니다.
+
+| 라이브러리 | 선언된 범위 | 용도 |
+| --- | --- | --- |
+| Django | `>=5.2,<7` | 웹 프레임워크 |
+| psycopg[binary] | `>=3.2,<4` | PostgreSQL 드라이버 |
+| beautifulsoup4 | `>=4.12,<5` | 공개 페이지 HTML 파싱 |
+| python-dotenv | `>=1.0,<2` | `.env` 설정 로드 |
+| requests | `>=2.31,<3` | HTTP API 통신 |
+| pyproj | `>=3.7,<4` | 좌표계 변환 |
+
+### 기술이 연결되는 방식
+
+- **화면과 서버** — Django 템플릿이 페이지를 만들고, JavaScript의 `fetch`가 추천 조회·운동량 저장 API를 호출합니다.
+- **서버와 데이터** — 회원·운동량은 Django ORM으로 관리하고, 추천용 시설·환경 데이터는 SQL로 조회합니다. 시설 거리 계산에는 PostGIS 함수를 사용합니다.
+- **수집과 추천** — Python으로 외부 데이터를 수집·정리하고, 지역·종목·거리·날씨·대기질 조건에 따라 추천 점수를 계산합니다.
+- **화면 상태** — 방 배치와 체험용 친구·일기 정보는 `localStorage`에 보관하고, 로그인 회원의 누적 운동량은 서버 DB에 저장합니다.
+
+현재 추천은 **규칙 기반 점수 계산**이며, 저장소에 별도의 학습 모델이나 학습 파이프라인은 포함되어 있지 않습니다. Python·PostgreSQL·PostGIS의 정확한 실행 버전은 저장소에 고정되어 있지 않아 임의로 표기하지 않았습니다.
 
 ## 주요 기능
 
@@ -161,20 +228,6 @@
 이동시간은 거리 기반 도보 추정치(`거리 km × 20분`)입니다. 화면의 이동수단 선택이 실제 대중교통 경로 계산으로 연결되지는 않습니다. 외부 장소 검색으로 보완된 결과는 별도 거리 중심 점수를 사용하며, 최대 이동시간을 넘는 후보가 포함될 수 있습니다.
 
 기상 조회 격자는 현재 `KMA_NX`, `KMA_NY` 설정을 사용합니다. 사용자 위치마다 기상 격자를 자동 변환하는 구조는 아직 아닙니다. 추천 점수는 후보 비교를 위한 값이며, 운동 효과나 시설 운영 여부를 보장하는 수치는 아닙니다.
-
-## 기술 구성
-
-| 영역 | 기술 | 사용 목적 |
-| --- | --- | --- |
-| Backend | Python, Django `>=5.2,<7` | 화면 렌더링, 세션, 계정·운동량 API, 추천 요청 처리 |
-| Frontend | Django Templates, HTML, CSS, Vanilla JavaScript | 캐릭터 UI, 입력 폼, 추천 카드, 방 꾸미기 |
-| Database | PostgreSQL, PostGIS, psycopg | 회원·운동량·시설·환경 데이터 관리와 공간 계산 |
-| Data Collection | requests, BeautifulSoup4 | 외부 API 조회 및 공개 운영정보 추출 |
-| Configuration / Coordinates | python-dotenv, pyproj | 환경 설정 로드 및 수집 코드의 좌표 변환 |
-| External Data | 기상청, 에어코리아, 설정된 시설 API | 날씨·대기질·운동시설 정보 수집 |
-| Location | Kakao Local API, 카카오맵 링크 | 지역 좌표·장소 검색 및 지도 연결 |
-
-의존성 범위는 [requirements.txt](requirements.txt)를 기준으로 합니다. 저장소에는 별도의 학습 모델이나 학습 파이프라인이 포함되어 있지 않습니다.
 
 ## 프로젝트 구성
 
