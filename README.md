@@ -8,9 +8,16 @@
 
 지역·날씨·대기질·운동 취향을 연결하는 운동 장소 추천 웹 서비스
 
-`Python` · `Django` · `PostgreSQL / PostGIS` · `HTML · CSS · JavaScript`
-
-[프로젝트 소개](#프로젝트-소개) · [기술 스택](#기술-스택) · [화면 둘러보기](#화면-둘러보기) · [시스템 구조](#시스템-구조) · [실행 방법](#실행-방법) · [팀 소개](#팀-소개)
+<table align="center">
+  <tr>
+    <td align="center"><a href="#프로젝트-소개">📌<br><b>프로젝트 소개</b></a></td>
+    <td align="center"><a href="#기술-스택">🧩<br><b>기술 스택</b></a></td>
+    <td align="center"><a href="#화면-둘러보기">🖥️<br><b>화면 둘러보기</b></a></td>
+    <td align="center"><a href="#시스템-구조">🏗️<br><b>시스템 구조</b></a></td>
+    <td align="center"><a href="#실행-방법">🚀<br><b>실행 방법</b></a></td>
+    <td align="center"><a href="#팀-소개">👥<br><b>팀 소개</b></a></td>
+  </tr>
+</table>
 
 </div>
 
