@@ -1,0 +1,338 @@
+[
+  {
+    "file": "bed/bed_lv01.png",
+    "category": "bed",
+    "level": 1,
+    "width": 152,
+    "height": 100
+  },
+  {
+    "file": "bed/bed_lv02.png",
+    "category": "bed",
+    "level": 2,
+    "width": 174,
+    "height": 107
+  },
+  {
+    "file": "bed/bed_lv03.png",
+    "category": "bed",
+    "level": 3,
+    "width": 186,
+    "height": 109
+  },
+  {
+    "file": "bed/bed_lv04.png",
+    "category": "bed",
+    "level": 4,
+    "width": 188,
+    "height": 112
+  },
+  {
+    "file": "bed/bed_lv05.png",
+    "category": "bed",
+    "level": 5,
+    "width": 191,
+    "height": 115
+  },
+  {
+    "file": "bed/bed_lv06.png",
+    "category": "bed",
+    "level": 6,
+    "width": 189,
+    "height": 116
+  },
+  {
+    "file": "bed/bed_lv07.png",
+    "category": "bed",
+    "level": 7,
+    "width": 183,
+    "height": 142
+  },
+  {
+    "file": "bed/bed_lv08.png",
+    "category": "bed",
+    "level": 8,
+    "width": 205,
+    "height": 150
+  },
+  {
+    "file": "desk/desk_lv01.png",
+    "category": "desk",
+    "level": 1,
+    "width": 161,
+    "height": 99
+  },
+  {
+    "file": "desk/desk_lv02.png",
+    "category": "desk",
+    "level": 2,
+    "width": 168,
+    "height": 121
+  },
+  {
+    "file": "desk/desk_lv03.png",
+    "category": "desk",
+    "level": 3,
+    "width": 170,
+    "height": 135
+  },
+  {
+    "file": "desk/desk_lv04.png",
+    "category": "desk",
+    "level": 4,
+    "width": 178,
+    "height": 159
+  },
+  {
+    "file": "desk/desk_lv05.png",
+    "category": "desk",
+    "level": 5,
+    "width": 177,
+    "height": 153
+  },
+  {
+    "file": "desk/desk_lv06.png",
+    "category": "desk",
+    "level": 6,
+    "width": 190,
+    "height": 140
+  },
+  {
+    "file": "desk/desk_lv07.png",
+    "category": "desk",
+    "level": 7,
+    "width": 183,
+    "height": 162
+  },
+  {
+    "file": "desk/desk_lv08.png",
+    "category": "desk",
+    "level": 8,
+    "width": 207,
+    "height": 168
+  },
+  {
+    "file": "window/window_lv01.png",
+    "category": "window",
+    "level": 1,
+    "width": 141,
+    "height": 104
+  },
+  {
+    "file": "window/window_lv02.png",
+    "category": "window",
+    "level": 2,
+    "width": 145,
+    "height": 111
+  },
+  {
+    "file": "window/window_lv03.png",
+    "category": "window",
+    "level": 3,
+    "width": 148,
+    "height": 114
+  },
+  {
+    "file": "window/window_lv04.png",
+    "category": "window",
+    "level": 4,
+    "width": 148,
+    "height": 116
+  },
+  {
+    "file": "window/window_lv05.png",
+    "category": "window",
+    "level": 5,
+    "width": 167,
+    "height": 125
+  },
+  {
+    "file": "window/window_lv06.png",
+    "category": "window",
+    "level": 6,
+    "width": 174,
+    "height": 128
+  },
+  {
+    "file": "window/window_lv07.png",
+    "category": "window",
+    "level": 7,
+    "width": 173,
+    "height": 128
+  },
+  {
+    "file": "window/window_lv08.png",
+    "category": "window",
+    "level": 8,
+    "width": 195,
+    "height": 134
+  },
+  {
+    "file": "bookshelf/bookshelf_lv01.png",
+    "category": "bookshelf",
+    "level": 1,
+    "width": 132,
+    "height": 65
+  },
+  {
+    "file": "bookshelf/bookshelf_lv02.png",
+    "category": "bookshelf",
+    "level": 2,
+    "width": 136,
+    "height": 100
+  },
+  {
+    "file": "bookshelf/bookshelf_lv03.png",
+    "category": "bookshelf",
+    "level": 3,
+    "width": 140,
+    "height": 121
+  },
+  {
+    "file": "bookshelf/bookshelf_lv04.png",
+    "category": "bookshelf",
+    "level": 4,
+    "width": 148,
+    "height": 122
+  },
+  {
+    "file": "bookshelf/bookshelf_lv05.png",
+    "category": "bookshelf",
+    "level": 5,
+    "width": 146,
+    "height": 124
+  },
+  {
+    "file": "bookshelf/bookshelf_lv06.png",
+    "category": "bookshelf",
+    "level": 6,
+    "width": 156,
+    "height": 134
+  },
+  {
+    "file": "bookshelf/bookshelf_lv07.png",
+    "category": "bookshelf",
+    "level": 7,
+    "width": 160,
+    "height": 129
+  },
+  {
+    "file": "bookshelf/bookshelf_lv08.png",
+    "category": "bookshelf",
+    "level": 8,
+    "width": 194,
+    "height": 141
+  },
+  {
+    "file": "plant/plant_lv01.png",
+    "category": "plant",
+    "level": 1,
+    "width": 61,
+    "height": 95
+  },
+  {
+    "file": "plant/plant_lv02.png",
+    "category": "plant",
+    "level": 2,
+    "width": 77,
+    "height": 121
+  },
+  {
+    "file": "plant/plant_lv03.png",
+    "category": "plant",
+    "level": 3,
+    "width": 76,
+    "height": 119
+  },
+  {
+    "file": "plant/plant_lv04.png",
+    "category": "plant",
+    "level": 4,
+    "width": 105,
+    "height": 127
+  },
+  {
+    "file": "plant/plant_lv05.png",
+    "category": "plant",
+    "level": 5,
+    "width": 80,
+    "height": 123
+  },
+  {
+    "file": "plant/plant_lv06.png",
+    "category": "plant",
+    "level": 6,
+    "width": 125,
+    "height": 125
+  },
+  {
+    "file": "plant/plant_lv07.png",
+    "category": "plant",
+    "level": 7,
+    "width": 127,
+    "height": 127
+  },
+  {
+    "file": "plant/plant_lv08.png",
+    "category": "plant",
+    "level": 8,
+    "width": 162,
+    "height": 130
+  },
+  {
+    "file": "rug/rug_lv01.png",
+    "category": "rug",
+    "level": 1,
+    "width": 167,
+    "height": 80
+  },
+  {
+    "file": "rug/rug_lv02.png",
+    "category": "rug",
+    "level": 2,
+    "width": 173,
+    "height": 86
+  },
+  {
+    "file": "rug/rug_lv03.png",
+    "category": "rug",
+    "level": 3,
+    "width": 174,
+    "height": 86
+  },
+  {
+    "file": "rug/rug_lv04.png",
+    "category": "rug",
+    "level": 4,
+    "width": 178,
+    "height": 89
+  },
+  {
+    "file": "rug/rug_lv05.png",
+    "category": "rug",
+    "level": 5,
+    "width": 181,
+    "height": 88
+  },
+  {
+    "file": "rug/rug_lv06.png",
+    "category": "rug",
+    "level": 6,
+    "width": 186,
+    "height": 89
+  },
+  {
+    "file": "rug/rug_lv07.png",
+    "category": "rug",
+    "level": 7,
+    "width": 188,
+    "height": 90
+  },
+  {
+    "file": "rug/rug_lv08.png",
+    "category": "rug",
+    "level": 8,
+    "width": 214,
+    "height": 96
+  }
+]
