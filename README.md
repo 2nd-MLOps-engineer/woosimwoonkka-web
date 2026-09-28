@@ -184,34 +184,54 @@ Django 추천 API와 화면
 
 ## 5. 요구사항 명세서 (SR / UR)
 
-### SR: System Requirements
-
-| ID | 구분 | 시스템 요구사항 | 검증 방법 |
-| --- | --- | --- | --- |
-| SR-01 | 수집 | 체육시설 API에서 지역별 시설 데이터를 수집한다 | `frontend/collector.py` 실행 및 수집 건수 확인 |
-| SR-02 | 수집 | 기상청·에어코리아 데이터를 수집한다 | 원본 JSON과 요청 시각 확인 |
-| SR-03 | 전처리 | 시설명·주소·좌표·유형 필드를 표준 컬럼으로 변환한다 | 정제 CSV 컬럼과 샘플 행 확인 |
-| SR-04 | 검증 | 행 수, 필수 식별자, 타입 오류, NULL 변화를 기록한다 | 로그와 품질검증 결과 확인 |
-| SR-05 | 적재 | 검증을 통과한 정제 데이터를 PostgreSQL에 적재한다 | 적재 전후 건수와 DB 조회 결과 확인 |
-| SR-06 | 자동화 | 수집부터 적재까지 설정된 주기로 반복 실행한다 | 스케줄 설정과 실행 로그 확인 |
-| SR-07 | 추천 | 지역·운동 종목·거리·환경 조건으로 후보를 정렬한다 | 추천 API 응답 및 화면 시연 |
-| SR-08 | 예외 | API 오류·좌표 누락·운영정보 확인 불가를 실패 또는 확인 필요로 남긴다 | 오류 로그와 리포트 확인 |
-| SR-09 | 보안 | API 키와 DB 비밀번호를 환경변수로 관리한다 | `.env.example`과 배포 환경변수 확인 |
-| SR-10 | 재현성 | 같은 명령으로 로컬 수집과 검증을 재실행할 수 있다 | 실행 방법 재현 테스트 |
-| SR-11 | 회원 데이터 | 회원의 운동량·칼로리·운동방 상태를 저장하고 조회한다 | 운동량 API와 DB 조회 확인 |
-| SR-12 | 사용자 기능 | 프로필·친구·운동 한마디 데이터를 저장하고 제공한다 | 프로필·친구 화면 시연 |
-
 ### UR: User Requirements
 
-| ID | 사용자 요구사항 | 연결 SR | 검증 방법 |
-| --- | --- | --- | --- |
-| UR-01 | 사용자는 지역과 운동 종목을 선택해 추천받을 수 있다 | SR-01, SR-02, SR-07 | 추천 화면 시연 |
-| UR-02 | 사용자는 거리·추천 이유·날씨·대기질을 확인할 수 있다 | SR-02, SR-03, SR-07 | 추천 카드 확인 |
-| UR-03 | 사용자는 카카오맵에서 장소 상세정보와 길찾기를 확인할 수 있다 | SR-07, SR-08 | 지도 링크 이동 확인 |
-| UR-04 | 사용자는 운동 후 칼로리를 기록하고 누적 운동량을 확인할 수 있다 | SR-11 | 운동량 API와 홈 화면 확인 |
-| UR-05 | 사용자는 누적 운동량에 따라 운동방 소품을 열 수 있다 | SR-11 | 운동방 보상 변화 확인 |
-| UR-06 | 사용자는 프로필과 선호 운동 조건을 저장할 수 있다 | SR-12 | 프로필 저장 확인 |
-| UR-07 | 사용자는 친구 코드로 친구를 조회하고 운동 한마디를 남길 수 있다 | SR-12 | 친구 화면 시연 |
+<table>
+  <thead>
+    <tr>
+      <th width="12%">ID</th>
+      <th width="46%">사용자 요구사항</th>
+      <th width="22%">연결 SR</th>
+      <th width="20%">검증 방법</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr valign="middle"><td align="center" nowrap="nowrap"><b>UR-01</b></td><td>사용자는 지역과 운동 종목을 선택해 추천받을 수 있다</td><td>SR-01, SR-02, SR-07</td><td>추천 화면 시연</td></tr>
+    <tr valign="middle"><td align="center" nowrap="nowrap"><b>UR-02</b></td><td>사용자는 거리·추천 이유·날씨·대기질을 확인할 수 있다</td><td>SR-02, SR-03, SR-07</td><td>추천 카드 확인</td></tr>
+    <tr valign="middle"><td align="center" nowrap="nowrap"><b>UR-03</b></td><td>사용자는 카카오맵에서 장소 상세정보와 길찾기를 확인할 수 있다</td><td>SR-07, SR-08</td><td>지도 링크 이동 확인</td></tr>
+    <tr valign="middle"><td align="center" nowrap="nowrap"><b>UR-04</b></td><td>사용자는 운동 후 칼로리를 기록하고 누적 운동량을 확인할 수 있다</td><td>SR-11</td><td>운동량 API와 홈 화면 확인</td></tr>
+    <tr valign="middle"><td align="center" nowrap="nowrap"><b>UR-05</b></td><td>사용자는 누적 운동량에 따라 운동방 소품을 열 수 있다</td><td>SR-11</td><td>운동방 보상 변화 확인</td></tr>
+    <tr valign="middle"><td align="center" nowrap="nowrap"><b>UR-06</b></td><td>사용자는 프로필과 선호 운동 조건을 저장할 수 있다</td><td>SR-12</td><td>프로필 저장 확인</td></tr>
+    <tr valign="middle"><td align="center" nowrap="nowrap"><b>UR-07</b></td><td>사용자는 친구 코드로 친구를 조회하고 운동 한마디를 남길 수 있다</td><td>SR-12</td><td>친구 화면 시연</td></tr>
+  </tbody>
+</table>
+
+### SR: System Requirements
+
+<table>
+  <thead>
+    <tr>
+      <th width="12%">ID</th>
+      <th width="14%">구분</th>
+      <th width="44%">시스템 요구사항</th>
+      <th width="30%">검증 방법</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr valign="middle"><td align="center" nowrap="nowrap"><b>SR-01</b></td><td>수집</td><td>체육시설 API에서 지역별 시설 데이터를 수집한다</td><td><code>frontend/collector.py</code> 실행 및 수집 건수 확인</td></tr>
+    <tr valign="middle"><td align="center" nowrap="nowrap"><b>SR-02</b></td><td>수집</td><td>기상청·에어코리아 데이터를 수집한다</td><td>원본 JSON과 요청 시각 확인</td></tr>
+    <tr valign="middle"><td align="center" nowrap="nowrap"><b>SR-03</b></td><td>전처리</td><td>시설명·주소·좌표·유형 필드를 표준 컬럼으로 변환한다</td><td>정제 CSV 컬럼과 샘플 행 확인</td></tr>
+    <tr valign="middle"><td align="center" nowrap="nowrap"><b>SR-04</b></td><td>검증</td><td>행 수, 필수 식별자, 타입 오류, NULL 변화를 기록한다</td><td>로그와 품질검증 결과 확인</td></tr>
+    <tr valign="middle"><td align="center" nowrap="nowrap"><b>SR-05</b></td><td>적재</td><td>검증을 통과한 정제 데이터를 PostgreSQL에 적재한다</td><td>적재 전후 건수와 DB 조회 결과 확인</td></tr>
+    <tr valign="middle"><td align="center" nowrap="nowrap"><b>SR-06</b></td><td>자동화</td><td>수집부터 적재까지 설정된 주기로 반복 실행한다</td><td>스케줄 설정과 실행 로그 확인</td></tr>
+    <tr valign="middle"><td align="center" nowrap="nowrap"><b>SR-07</b></td><td>추천</td><td>지역·운동 종목·거리·환경 조건으로 후보를 정렬한다</td><td>추천 API 응답 및 화면 시연</td></tr>
+    <tr valign="middle"><td align="center" nowrap="nowrap"><b>SR-08</b></td><td>예외</td><td>API 오류·좌표 누락·운영정보 확인 불가를 실패 또는 확인 필요로 남긴다</td><td>오류 로그와 리포트 확인</td></tr>
+    <tr valign="middle"><td align="center" nowrap="nowrap"><b>SR-09</b></td><td>보안</td><td>API 키와 DB 비밀번호를 환경변수로 관리한다</td><td><code>.env.example</code>과 배포 환경변수 확인</td></tr>
+    <tr valign="middle"><td align="center" nowrap="nowrap"><b>SR-10</b></td><td>재현성</td><td>같은 명령으로 로컬 수집과 검증을 재실행할 수 있다</td><td>실행 방법 재현 테스트</td></tr>
+    <tr valign="middle"><td align="center" nowrap="nowrap"><b>SR-11</b></td><td>회원 데이터</td><td>회원의 운동량·칼로리·운동방 상태를 저장하고 조회한다</td><td>운동량 API와 DB 조회 확인</td></tr>
+    <tr valign="middle"><td align="center" nowrap="nowrap"><b>SR-12</b></td><td>사용자 기능</td><td>프로필·친구·운동 한마디 데이터를 저장하고 제공한다</td><td>프로필·친구 화면 시연</td></tr>
+  </tbody>
+</table>
 
 ## 6. ERD
 
