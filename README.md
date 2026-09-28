@@ -20,12 +20,51 @@
 | 항목 | 주소 |
 | --- | --- |
 | 서비스 URL | [https://hkjfduhalihufsduahufahoiuw.onrender.com/](https://hkjfduhalihufsduahufahoiuw.onrender.com/) |
-| 로컬 서비스 | [http://127.0.0.1:8000/](http://127.0.0.1:8000/) |
 | 제출 저장소 | [mlo-02-p1-team3](https://github.com/encore-ai-campus/mlo-02-p1-team3) |
 | 웹 서비스 원본 | [woosimwoonkka-web](https://github.com/2nd-MLOps-engineer/woosimwoonkka-web) |
 | 데이터·백엔드 원본 | [hkjfduhalihufsduahufahoiuw](https://github.com/2nd-MLOps-engineer/hkjfduhalihufsduahufahoiuw) |
 
 > 현재 배포 서비스는 이 저장소가 아닌 별도 배포 설정에서 운영됩니다. 이 저장소는 프로젝트 문서와 평가 설명을 보관합니다.
+
+## 프로젝트 파일 구조
+
+```text
+woosimwoonkka-web/
+├── config/                         # Django 프로젝트 설정·URL·WSGI/ASGI
+├── frontend/                       # 서비스 앱: 화면, 회원, 추천, 운동 기록, 친구 기능
+│   ├── templates/                  # Django HTML 템플릿
+│   ├── static/                     # CSS·JavaScript·이미지 등 정적 파일
+│   ├── migrations/                 # 데이터베이스 스키마 변경 이력
+│   ├── collector.py                # 공공데이터 수집·전처리·품질검증
+│   ├── recommendation_service.py   # 운동 장소 추천 로직
+│   ├── models.py                   # 회원·운동·시설 관련 데이터 모델
+│   ├── views.py                    # 웹 화면과 서비스 요청 처리
+│   └── tests.py                    # 서비스 테스트 코드
+├── pipeline/                       # 독립 실행 가능한 데이터 파이프라인
+│   ├── run_pipeline.py             # 수집·전처리·검증·적재 일괄 실행
+│   └── scheduler.py                # 파이프라인 주기 실행 스케줄러
+├── docs/                           # 평가 자료·품질 기준·시연 이미지
+│   ├── assessment/                 # 데이터 품질검증 기준
+│   └── images/                     # 서비스 화면·구조·기술 스택 이미지
+├── manage.py                       # Django 관리 명령 진입점
+├── requirements.txt                # Python 의존성 목록
+├── render.yaml                     # Render 배포 설정
+├── .env.example                    # 환경변수 설정 예시
+├── CRAWLING_AND_RECOMMENDATION.md  # 수집·추천 로직 설명
+└── README.md                       # 프로젝트 소개·실행·평가 문서
+```
+
+### 디렉터리별 역할
+
+| 경로 | 역할 |
+| --- | --- |
+| `config/` | Django 설정, URL 라우팅, 배포용 WSGI/ASGI 구성을 관리합니다. |
+| `frontend/` | 사용자 화면과 회원·추천·운동 기록·친구 기능을 제공하고 서비스 데이터를 처리합니다. |
+| `pipeline/` | 웹 서비스와 분리된 수집·전처리·품질검증·적재·스케줄링을 담당합니다. |
+| `docs/` | 데이터 품질검증 기준, 아키텍처, 데이터 흐름, 시연 화면을 보관합니다. |
+| `manage.py` | 마이그레이션, 서버 실행 등 Django 관리 명령을 실행합니다. |
+| `render.yaml` | 배포 환경의 서비스 실행 명령과 환경 설정을 정의합니다. |
+| `.env.example` | API 키와 데이터베이스 연결 정보에 필요한 환경변수 형식을 안내합니다. |
 
 <table align="center">
   <tr>
@@ -428,10 +467,10 @@ pip install -r requirements.txt
 ```bash
 cp .env.example .env
 python manage.py migrate
-python manage.py runserver 127.0.0.1:8000
+python manage.py runserver
 ```
 
-브라우저에서 [http://127.0.0.1:8000/](http://127.0.0.1:8000/)을 엽니다.
+명령 실행 후 Django 개발 서버가 안내하는 주소로 접속합니다.
 
 ### 수집기 단독 실행
 
