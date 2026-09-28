@@ -1,6 +1,7 @@
 __pycache__/
 *.py[cod]
 db.sqlite3
+chatbot_test.sqlite3
 .env
 staticfiles/
 .venv/
