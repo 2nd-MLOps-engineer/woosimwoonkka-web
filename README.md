@@ -1,6 +1,17 @@
-# 우심운까 · WoosimWoonkka
+<div align="center">
 
-> 오늘 어디서 운동할지 고민하는 순간부터 운동을 마치고 나만의 방을 꾸미는 순간까지
+# 🏃 우심운까 · WoosimWoonkka
+
+### 오늘도, 움직이는 내가 좋다
+
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-운동%20시작하기-2f80ed?style=for-the-badge)](https://hkjfduhalihufsduahufahoiuw.onrender.com/)
+[![Django](https://img.shields.io/badge/Django-5.2%2B-092e20?style=flat-square&logo=django&logoColor=white)](https://www.djangoproject.com/)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-PostGIS-336791?style=flat-square&logo=postgresql&logoColor=white)](https://www.postgresql.org/)
+[![Project](https://img.shields.io/badge/Project-MOTIVE-ff8a65?style=flat-square)](#1-팀-소개)
+
+<p>지역 · 날씨 · 대기질 · 운동 취향을 연결해<br />오늘 운동하기 좋은 장소를 추천하는 서비스</p>
+
+</div>
 
 지역, 날씨, 대기질, 운동 취향을 연결해 오늘 운동하기 좋은 장소를 추천하고 운동 기록을 이어가는 웹 서비스입니다. 이번 단위 프로젝트에서는 웹 서비스와 분리된 공공데이터 수집·전처리·품질검증·적재·스케줄링 파이프라인을 함께 정리했습니다.
 
@@ -16,13 +27,25 @@
 
 > 현재 배포 서비스는 이 저장소가 아닌 별도 배포 설정에서 운영됩니다. 이 저장소는 프로젝트 문서와 평가 설명을 보관합니다.
 
+<table align="center">
+  <tr>
+    <td align="center"><a href="#1-팀-소개">👥<br /><b>팀 소개</b></a></td>
+    <td align="center"><a href="#2-프로젝트-개요">🎯<br /><b>프로젝트</b></a></td>
+    <td align="center"><a href="#3-기술-스택">🧩<br /><b>기술 스택</b></a></td>
+    <td align="center"><a href="#8-수행-결과">🖥️<br /><b>시연 결과</b></a></td>
+    <td align="center"><a href="#9-한-줄-회고">💬<br /><b>회고</b></a></td>
+  </tr>
+</table>
+
+> **작은 움직임이 다음 운동으로 이어지도록** 추천부터 기록, 운동방 꾸미기까지 하나의 흐름으로 연결했습니다.
+
 ## 목차
 
 - [1. 팀 소개](#1-팀-소개)
 - [2. 프로젝트 개요](#2-프로젝트-개요)
 - [3. 기술 스택](#3-기술-스택)
 - [4. WBS](#4-wbs)
-- [5. 요구사항 명세서](#5-요구사항-명세서)
+- [5. 요구사항 명세서](#5-요구사항-명세서-sr--ur)
 - [6. ERD](#6-erd)
 - [7. 주요 프로시저](#7-주요-프로시저)
 - [8. 수행 결과](#8-수행-결과)
