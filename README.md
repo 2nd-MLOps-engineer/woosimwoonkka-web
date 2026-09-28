@@ -63,7 +63,7 @@
 
 <table>
   <thead>
-    <tr>
+    <tr height="48" valign="middle">
       <th width="14%">팀원</th>
       <th width="23%">역할</th>
       <th width="43%">담당 업무</th>
@@ -71,25 +71,25 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
+    <tr height="88" valign="middle">
       <td align="center" nowrap="nowrap"><b>신경호</b></td>
       <td>프론트엔드 · 발표자료</td>
       <td>서비스 화면 구현, 사용자 인터페이스 구성, 발표자료 준비</td>
       <td><a href="https://github.com/Shinkyeongho">Shinkyeongho</a></td>
     </tr>
-    <tr>
+    <tr height="88" valign="middle">
       <td align="center" nowrap="nowrap"><b>류지예</b></td>
       <td>프론트엔드 · 발표자료</td>
       <td>서비스 화면 구현, 사용자 경험 구성, 발표자료 준비</td>
       <td><a href="https://github.com/callijee22-ship-it">callijee22-ship-it</a></td>
     </tr>
-    <tr>
+    <tr height="88" valign="middle">
       <td align="center" nowrap="nowrap"><b>백선영</b></td>
       <td>데이터 수집 · 데이터베이스 파이프라인</td>
       <td>공공데이터 수집, 전처리, 품질검증, 데이터 파이프라인 구축</td>
       <td><a href="https://github.com/baikAnalyst">baikAnalyst</a></td>
     </tr>
-    <tr>
+    <tr height="88" valign="middle">
       <td align="center" nowrap="nowrap"><b>김형준</b></td>
       <td>백엔드 · 프로젝트 전반</td>
       <td>Django 백엔드, 기능 연동, 배포 설정 및 프로젝트 전반</td>
