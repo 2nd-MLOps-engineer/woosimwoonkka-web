@@ -137,12 +137,43 @@ erDiagram
     MEMBER ||--o{ FRIEND_REQUEST : sends
     MEMBER ||--o{ FRIEND_NOTE : writes
     MEMBER ||--o{ SITE_VISIT : records
-    MEMBER { int id PK; string name; string nickname UK; string password_hash; string address; string friend_code UK; json room_state; json room_layout }
-    WORKOUT_PROGRESS { int id PK; int member_id FK; int total_calories; json entries }
-    FRIENDSHIP { int id PK; int member_id FK; int friend_id FK }
-    FRIEND_REQUEST { int id PK; int requester_id FK; int recipient_id FK; string status }
-    FRIEND_NOTE { int id PK; int author_id FK; text text }
-    SITE_VISIT { int id PK; string visitor_key; date visited_on }
+    MEMBER {
+        int id PK
+        string name
+        string nickname UK
+        string password_hash
+        string address
+        string friend_code UK
+        json room_state
+        json room_layout
+    }
+    WORKOUT_PROGRESS {
+        int id PK
+        int member_id FK
+        int total_calories
+        json entries
+    }
+    FRIENDSHIP {
+        int id PK
+        int member_id FK
+        int friend_id FK
+    }
+    FRIEND_REQUEST {
+        int id PK
+        int requester_id FK
+        int recipient_id FK
+        string status
+    }
+    FRIEND_NOTE {
+        int id PK
+        int author_id FK
+        text note_text
+    }
+    SITE_VISIT {
+        int id PK
+        string visitor_key
+        date visited_on
+    }
 ```
 
 파이프라인 데이터는 서비스 테이블과 분리해 `raw` 원본과 `processed` 정제 데이터로 관리하는 것을 기준으로 합니다. 현재 코드의 DB 우선 추천은 `processed.facility`, `facility_processed`, `processed.weather_ultra_ncst`, `processed.air_quality`가 존재하면 우선 조회하고, 없을 때 외부 API 또는 백업 CSV로 보완합니다.
