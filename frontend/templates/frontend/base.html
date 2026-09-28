@@ -1,0 +1,199 @@
+{% load static %}
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}우심운까{% endblock %}</title>
+  <meta name="csrf-token" content="{{ csrf_token }}">
+  <link rel="stylesheet" href="{% static 'assets/css/base.css' %}?v=20260918-180">
+  <link rel="stylesheet" href="{% static 'assets/css/mini_home.css' %}?v=20260928-1125">
+  <link rel="stylesheet" href="{% static 'assets/css/pages.css' %}?v=20260918-180">
+  {% block extra_css %}{% endblock %}
+  <link rel="stylesheet" href="{% static 'assets/css/character_theme.css' %}?v=20260923-1600">
+  <link rel="stylesheet" href="{% static 'assets/css/chatbot.css' %}?v=20260928-1125">
+</head>
+<body data-page="{{ active_tab|default:'home' }}" data-member-id="{{ member.id|default:'' }}" data-member-nickname="{{ member.nickname|default:''|escape }}" data-member-address="{{ member.address|default:''|escape }}" data-member-friend-code="{{ member.friend_code|default:''|escape }}" data-room-owner-id="{{ room_owner.id|default:member.id|default:'' }}" data-room-owner-nickname="{{ room_owner.nickname|default:member.nickname|default:''|escape }}" data-room-owner-address="{{ room_owner.address|default:member.address|default:''|escape }}" data-room-owner-calories="{{ visitor_total_calories|default:0 }}" data-room-visitor="{% if room_is_visitor %}1{% else %}0{% endif %}" data-location-loaded="{% if location_loaded %}1{% else %}0{% endif %}" data-is-guest="{% if is_guest %}1{% else %}0{% endif %}" data-home-url="{% url 'home' %}">
+  <main class="site-stage">
+    <section class="mini-shell character-theme-shell">
+      <header class="mini-topbar">
+        <a class="brand-lockup" href="{% url 'home' %}" aria-label="우심운까 홈">
+          <div class="brand-mark" aria-hidden="true">우</div>
+          <div>
+            <strong class="brand">우심운까</strong>
+            <span>오늘도, 움직이는 내가 좋다.</span>
+          </div>
+        </a>
+        <div class="topbar-tag">MY MOVE CLUB</div>
+        <div class="visitor-counter" aria-label="방문 카운터">
+          <span>TODAY <b id="todayCount" title="오늘 방문자 수">{{ site_today|default:"0" }}</b></span>
+          <i></i>
+          <span>TOTAL <b id="totalCount" title="누적 방문자 수">{{ site_total|default:"0" }}</b></span>
+        </div>
+      </header>
+
+      <div class="mini-book-wrap">
+        <div class="mini-book">
+          <aside class="profile-rail">
+            <div class="rail-caption">MY PROFILE</div>
+            <div class="profile-photo-frame character-photo-frame">
+              <div class="profile-avatar" id="profileAvatar">
+                <img
+                  id="profileAvatarImage"
+                  class="profile-avatar-image"
+                  src="{% static 'assets/images/character/player_main.png' %}"
+                  data-default-src="{% static 'assets/images/character/player_main.png' %}"
+                  data-female-src="{% static 'assets/images/character/female_main.png' %}"
+                  data-male-src="{% static 'assets/images/character/player_main.png' %}"
+                  alt="USIMUNKKA character profile"
+                >
+              </div>
+              <span class="profile-tape" aria-hidden="true"></span>
+              <span class="profile-doodle" aria-hidden="true">GOOD MOVE!</span>
+              <span class="profile-photo-tag">{% if is_guest %}GUEST ROOM{% else %}MEMBER 07{% endif %}</span>
+            </div>
+            <h2 id="profileNickname">{{ member.nickname|default:"우심이" }}</h2>
+            <p class="profile-message" id="profileMessage">오늘도 일단 움직이자.</p>
+
+            <dl class="profile-facts">
+              <div><dt>HOME</dt><dd id="profileRegion">{{ member.address|default:"서울 관악구" }}</dd></div>
+              <div><dt>SPORT</dt><dd id="profileSports">러닝 · 헬스</dd></div>
+              <div><dt>MOVE</dt><dd id="profileMove">도보 · 20분</dd></div>
+              <div><dt>MOOD</dt><dd id="profileMood">🙂 가볍게 시작</dd></div>
+            </dl>
+
+            {% if is_guest %}
+              <a class="small-outline-button" href="{% url 'profile' %}">게스트 프로필 수정</a>
+              <a class="small-outline-button" href="{% url 'signup' %}">회원가입하고 내 방 만들기</a>
+              <a class="small-outline-button" href="{% url 'login' %}">로그인</a>
+              <form method="post" action="{% url 'logout' %}" style="margin:0">
+                {% csrf_token %}
+                <button class="small-outline-button" type="submit" style="width:100%;cursor:pointer">체험 종료</button>
+              </form>
+            {% else %}
+              <a class="small-outline-button" href="{% url 'profile' %}">프로필 수정</a>
+              <form method="post" action="{% url 'logout' %}" style="margin:0">
+                {% csrf_token %}
+                <button class="small-outline-button" type="submit" style="width:100%;cursor:pointer">로그아웃</button>
+              </form>
+            {% endif %}
+
+            <div class="friend-note-mini">
+              <small>FRIEND NOTE</small>
+              <strong>“오늘 뭐 할래?”</strong>
+              <span>친구의 한마디가 도착했어요.</span>
+            </div>
+
+            <section class="mini-music-player is-playing" id="miniMusicPlayer" aria-label="배경음악 데모 플레이어">
+              <div class="music-player-top">
+                <span class="music-badge">BGM</span>
+                <small>MY ROOM TAPE</small>
+                <div class="music-equalizer" aria-hidden="true"><i></i><i></i><i></i></div>
+              </div>
+              <div class="music-track-row">
+                <div class="music-cover" aria-hidden="true"><span>U</span><i>07</i></div>
+                <div class="music-track-copy">
+                  <strong id="musicTrackTitle">Morning Lap</strong>
+                  <span id="musicTrackArtist">USIM ROOM MIX</span>
+                </div>
+              </div>
+              <div class="music-control-row">
+                <button type="button" class="music-skip" id="musicPrev" aria-label="이전 곡">‹</button>
+                <button type="button" class="music-play" id="musicToggle" aria-label="재생 상태 전환"><span aria-hidden="true">Ⅱ</span></button>
+                <button type="button" class="music-skip" id="musicNext" aria-label="다음 곡">›</button>
+                <div class="music-progress" aria-hidden="true"><i id="musicProgress"></i></div>
+                <time id="musicTime">0:37</time>
+              </div>
+              <p>MY BGM · 직접 만든 음원이에요.</p>
+            </section>
+          </aside>
+
+          <section class="page-paper">{% block content %}{% endblock %}</section>
+
+          <nav class="bookmark-tabs" aria-label="메뉴">
+            <a class="bookmark {% if active_tab == 'home' %}is-active{% endif %}" href="{% url 'home' %}"><span>HOME</span><small>MY ROOM</small></a>
+            <a class="bookmark recommend-tab {% if active_tab == 'recommend' %}is-active{% endif %}" href="{% url 'recommend' %}"><span>MOVE</span><small>운동추천</small></a>
+            <a class="bookmark {% if active_tab == 'friends' %}is-active{% endif %}" href="{% url 'friends' %}"><span>FRIEND</span><small>NOTE</small></a>
+            <a class="bookmark {% if active_tab == 'profile' %}is-active{% endif %}" href="{% url 'profile' %}"><span>PROFILE</span><small>SETTING</small></a>
+          </nav>
+        </div>
+      </div>
+      <section class="usim-data-ribbon" aria-label="운동 추천 데이터 안내">
+      <div class="usim-data-ribbon-copy">
+        <small>POWERED BY DATA</small>
+        <strong>우심운까 데이터 출처 · 연계</strong>
+      </div>
+      <div class="usim-data-logo-grid">
+        <a class="usim-data-logo-card is-primary" href="https://www.kspo.or.kr/" target="_blank" rel="noopener noreferrer"><span class="usim-data-logo-mark kspo">◆</span><span class="usim-data-logo-copy"><strong>KSPO</strong><small>SPORTS &amp; PROMOTION</small></span></a>
+        <a class="usim-data-logo-card" href="https://www.data.go.kr/" target="_blank" rel="noopener noreferrer"><span class="usim-data-logo-mark data-go">▦</span><span class="usim-data-logo-copy"><strong>DATA.GO.KR</strong><small>PUBLIC DATA PORTAL</small></span></a>
+        <a class="usim-data-logo-card" href="https://www.culture.go.kr/data/" target="_blank" rel="noopener noreferrer"><span class="usim-data-logo-mark culture">C</span><span class="usim-data-logo-copy"><strong>CULTURE DATA</strong><small>CULTURE BIG DATA</small></span></a>
+        <a class="usim-data-logo-card" href="https://www.weather.go.kr/" target="_blank" rel="noopener noreferrer"><span class="usim-data-logo-mark kma">〽</span><span class="usim-data-logo-copy"><strong>KMA</strong><small>WEATHER DATA</small></span></a>
+        <a class="usim-data-logo-card" href="https://www.airkorea.or.kr/" target="_blank" rel="noopener noreferrer"><span class="usim-data-logo-mark air">≋</span><span class="usim-data-logo-copy"><strong>AirKorea</strong><small>AIR QUALITY</small></span></a>
+      </div>
+      </section>
+    </section>
+  </main>
+
+  <div class="usim-chat-dock" id="usimChatDock">
+    <div class="usim-chat-teaser" id="usimChatPrompt" role="button" tabindex="0" aria-label="우심이와 대화 열기">
+      <div class="usim-chat-teaser-copy">
+        <span class="usim-chat-bubble-speaker">우심이</span>
+        <span class="usim-chat-bubble-copy">오늘 운동, 나한테 물어볼래?</span>
+      </div>
+      <button type="button" class="usim-chat-teaser-close" id="usimChatPromptClose" aria-label="말풍선 닫기">×</button>
+    </div>
+
+    <section class="usim-chat-panel" id="usimChatPanel" aria-label="우심운까 AI 코치" hidden>
+      <header class="usim-chat-panel-head">
+        <div class="usim-rpg-nameplate"><span class="usim-rpg-name-dot" aria-hidden="true"></span><div><strong>우심이</strong><small>AI MOVE NPC</small></div></div>
+        <div class="usim-chat-head-actions">
+          <button type="button" class="usim-chat-icon-btn" id="usimChatClear" title="대화 새로 시작" aria-label="대화 새로 시작">↻</button>
+          <button type="button" class="usim-chat-icon-btn" id="usimChatClose" title="닫기" aria-label="AI 코치 닫기">×</button>
+        </div>
+      </header>
+      <div class="usim-chat-messages" id="usimChatMessages" aria-live="polite"></div>
+      <details class="usim-chat-quick-wrap">
+        <summary>추천 질문</summary>
+        <div class="usim-chat-quick" aria-label="빠른 질문">
+          <button type="button" class="usim-chat-chip" data-message="오늘 할 운동을 추천해줘">오늘 운동</button>
+          <button type="button" class="usim-chat-chip" data-message="10분 정도 할 수 있는 스트레칭 루틴을 알려줘">10분 스트레칭</button>
+          <button type="button" class="usim-chat-chip" data-message="오늘 러닝해도 괜찮을까?">러닝</button>
+        </div>
+      </details>
+      <div class="usim-chat-compose">
+        <form id="usimChatForm">
+          <textarea class="usim-chat-input" id="usimChatInput" rows="1" maxlength="600" placeholder="우심이에게 말 걸기..." aria-label="AI 코치에게 보낼 메시지"></textarea>
+          <button class="usim-chat-send" id="usimChatSend" type="submit" aria-label="메시지 보내기">▶</button>
+        </form>
+      </div>
+    </section>
+
+    <button type="button" class="usim-chat-launcher" id="usimChatLauncher" aria-label="우심운까 AI 코치에게 말 걸기" aria-controls="usimChatPanel" aria-expanded="false">
+      <div class="usim-chat-launcher-character-wrap">
+        <span class="usim-chat-status-mark" aria-hidden="true">!</span>
+        <div class="usim-chat-launcher-halo" aria-hidden="true"></div>
+        <img id="usimChatMascot"
+          src="{% static 'assets/images/character/player_wave.png' %}"
+          data-default-src="{% static 'assets/images/character/player_wave.png' %}"
+          data-male-src="{% static 'assets/images/character/player_wave.png' %}"
+          data-female-src="{% static 'assets/images/character/female_wave.png' %}"
+          data-male-idle-src="{% static 'assets/images/character/player_main.png' %}"
+          data-male-wave-src="{% static 'assets/images/character/player_wave.png' %}"
+          data-male-run-src="{% static 'assets/images/character/player_run.png' %}"
+          data-male-tie-src="{% static 'assets/images/character/player_tie.png' %}"
+          data-female-idle-src="{% static 'assets/images/character/female_main.png' %}"
+          data-female-wave-src="{% static 'assets/images/character/female_wave.png' %}"
+          data-female-run-src="{% static 'assets/images/character/female_run.png' %}"
+          data-female-tie-src="{% static 'assets/images/character/female_tie.png' %}"
+          alt="">
+      </div>
+      <div class="usim-chat-launcher-meta"><strong>우심이</strong><span>말 걸기</span></div>
+    </button>
+  </div>
+
+  <script src="{% static 'assets/js/api.js' %}?v=20260918-180"></script>
+  <script src="{% static 'assets/js/app.js' %}?v=20260923-1600"></script>
+  <script src="{% static 'assets/js/chatbot.js' %}?v=20260923-807"></script>
+  {% block extra_js %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,13 @@
+__pycache__/
+*.py[cod]
+db.sqlite3
+.env
+staticfiles/
+.venv/
+db_backups/
+archive/
+output/
+.DS_Store
+frontend/db_backup/
+frontend/db_backup/*.csv
+woosimwoonkka-git/
