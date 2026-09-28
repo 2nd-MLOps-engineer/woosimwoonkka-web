@@ -84,6 +84,24 @@ Django 추천 API와 화면
 
 ## 3. 기술 스택
 
+<div align="center">
+
+<p><strong>Frontend</strong></p>
+<p>
+  <img src="https://raw.githubusercontent.com/2nd-MLOps-engineer/hkjfduhalihufsduahufahoiuw/main/docs/images/badges/html5.svg" alt="HTML5" height="24" />
+  <img src="https://raw.githubusercontent.com/2nd-MLOps-engineer/hkjfduhalihufsduahufahoiuw/main/docs/images/badges/css3.svg" alt="CSS3" height="24" />
+  <img src="https://raw.githubusercontent.com/2nd-MLOps-engineer/hkjfduhalihufsduahufahoiuw/main/docs/images/badges/javascript.svg" alt="JavaScript" height="24" />
+</p>
+<p><strong>Backend · Database</strong></p>
+<p>
+  <img src="https://raw.githubusercontent.com/2nd-MLOps-engineer/hkjfduhalihufsduahufahoiuw/main/docs/images/badges/python.svg" alt="Python" height="24" />
+  <img src="https://raw.githubusercontent.com/2nd-MLOps-engineer/hkjfduhalihufsduahufahoiuw/main/docs/images/badges/django.svg" alt="Django" height="24" />
+  <img src="https://raw.githubusercontent.com/2nd-MLOps-engineer/hkjfduhalihufsduahufahoiuw/main/docs/images/badges/postgresql.svg" alt="PostgreSQL" height="24" />
+  <img src="https://raw.githubusercontent.com/2nd-MLOps-engineer/hkjfduhalihufsduahufahoiuw/main/docs/images/badges/postgis.svg" alt="PostGIS" height="24" />
+</p>
+
+</div>
+
 | 구분 | 기술 | 사용 목적 |
 | --- | --- | --- |
 | Frontend | HTML, CSS, Vanilla JavaScript, Django Templates | 운동방·추천·친구·프로필 화면 |
@@ -218,6 +236,8 @@ erDiagram
 
 ## 8. 수행 결과
 
+![메인 운동방](https://raw.githubusercontent.com/2nd-MLOps-engineer/hkjfduhalihufsduahufahoiuw/main/docs/images/01-home.png)
+
 | 화면 | 설명 |
 | --- | --- |
 | HOME | 누적 운동량, 운동방, 오늘의 추천 진입 |
@@ -226,6 +246,10 @@ erDiagram
 | DIARY | 날짜별 운동 기록 확인 |
 | FRIEND | 친구 조회와 운동 한마디 |
 | PROFILE | 운동 지역·종목·캐릭터 설정 |
+
+![추천 조건 입력](https://raw.githubusercontent.com/2nd-MLOps-engineer/hkjfduhalihufsduahufahoiuw/main/docs/images/02-recommend.png)
+
+![추천 결과](https://raw.githubusercontent.com/2nd-MLOps-engineer/hkjfduhalihufsduahufahoiuw/main/docs/images/03-recommend-results.png)
 
 ### 테스트 및 시연 순서
 
