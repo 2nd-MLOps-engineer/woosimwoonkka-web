@@ -4,7 +4,7 @@
 
 ### 오늘도, 움직이는 내가 좋다
 
-<a href="https://hkjfduhalihufsduahufahoiuw.onrender.com/"><img src="https://img.shields.io/badge/Live%20Demo-운동%20시작하기-2f80ed?style=for-the-badge" alt="Live Demo" height="28" /></a>
+<a href="https://hkjfduhalihufsduahufahoiuw.onrender.com/"><img src="https://img.shields.io/badge/Live%20Demo-운동%20시작하기-2f80ed?style=flat-square" alt="Live Demo" height="28" /></a>
 <a href="https://www.djangoproject.com/"><img src="https://img.shields.io/badge/Django-5.2%2B-092e20?style=flat-square&logo=django&logoColor=white" alt="Django" height="28" /></a>
 <a href="https://www.postgresql.org/"><img src="https://img.shields.io/badge/PostgreSQL-PostGIS-336791?style=flat-square&logo=postgresql&logoColor=white" alt="PostgreSQL and PostGIS" height="28" /></a>
 <a href="#1-팀-소개"><img src="https://img.shields.io/badge/Project-MOTIVE-ff8a65?style=flat-square" alt="Project MOTIVE" height="28" /></a>
